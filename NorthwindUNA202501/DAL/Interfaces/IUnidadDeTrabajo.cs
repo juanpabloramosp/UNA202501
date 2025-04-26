@@ -12,6 +12,10 @@ namespace DAL.Interfaces
         ICategoryDAL CategoryDAL { get; }
         IShipperDAL ShipperDAL { get; }
 
+        IProductDAL ProductDAL { get; }
+
+        ISupplierDAL SupplierDAL { get; }
+
         void Complete();
 
     }

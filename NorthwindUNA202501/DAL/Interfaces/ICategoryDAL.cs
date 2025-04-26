@@ -9,7 +9,7 @@ namespace DAL.Interfaces
 {
     public interface ICategoryDAL: IGenericDAL<Category>
     {
-        
+        List<Category> GetCategories();
 
     }
 }
