@@ -85,6 +85,15 @@ namespace FrontEnd.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+
+            HttpContext.Session.Remove("Token");
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Login", "Login");
+        }
+
 
 
     }
