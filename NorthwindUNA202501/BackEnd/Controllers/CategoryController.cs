@@ -33,9 +33,9 @@ namespace BackEnd.Controllers
 
         // POST api/<CategoryController>
         [HttpPost]
-        public void Post([FromBody]CategoryDTO category)
+        public CategoryDTO Post([FromBody]CategoryDTO category)
         {
-            _categoryService.AddCategory(category);
+           return _categoryService.AddCategory(category);
 
         }
 

@@ -10,6 +10,7 @@ namespace DAL.Interfaces
     public interface ICategoryDAL: IGenericDAL<Category>
     {
         List<Category> GetCategories();
+        Category AddCategory(Category category);
 
     }
 }

@@ -34,11 +34,11 @@ namespace DAL.Implementations
         }
 
 
-        public  new  bool Add(Category category)
+        public Category AddCategory(Category category)
         {
             try
             {
-                string query = "EXEC [dbo].[sp_AddCategory]@CategoryName";
+                string query = "EXEC [dbo].[sp_AddCategory]@CategoryName, @CategoryId out";
 
                 var parameters = new SqlParameter[]
                 {
@@ -47,19 +47,28 @@ namespace DAL.Implementations
                     ParameterName = "@CategoryName",
                     SqlDbType = System.Data.SqlDbType.VarChar,
                     Value = category.CategoryName
-                }
+                },
+                     new SqlParameter()
+                    {
+                        ParameterName = "@CategoryId",
+                        SqlDbType= System.Data.SqlDbType.Int,
+                        Direction = System.Data.ParameterDirection.Output
+                    }
                 };
-
+                
                 _context
                     .Database
                     .ExecuteSqlRaw(query, parameters);
-                return true;
+
+                category.CategoryId = Convert.ToInt32(parameters[1].Value);
+
+                return category;
 
             }
             catch (Exception)
             {
 
-                return false;
+                throw;
             }
             
         }

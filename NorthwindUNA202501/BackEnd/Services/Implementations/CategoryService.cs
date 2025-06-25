@@ -41,9 +41,9 @@ namespace BackEnd.Services.Implementations
             try
             {
                 _logger.LogError("Ingresa a AddCategory");
-                _unidadDeTrabajo.CategoryDAL.Add(Convertir(category));
+               var entity= _unidadDeTrabajo.CategoryDAL.AddCategory(Convertir(category));
                 _unidadDeTrabajo.Complete();
-                return category;
+                return Convertir(entity);
 
             }
             catch (Exception e)
